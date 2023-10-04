@@ -47,6 +47,14 @@ ExportedObj/
 *.opendb
 *.VC.db
 
+#minhas modificações nessa parte do codigo
+
+Desktop-1.png
+scriptingCSharp.png
+*.mp4
+*.jpeg
+
+
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
