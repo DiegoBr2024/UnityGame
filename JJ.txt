@@ -1,1 +1,5 @@
 Meu nome e diego tenho 19 anos e eu estou aprendendo a programar, eu ja tenho uma experiencia com essa linguagem, 
+
+(Motivos de ter erros de acentuação)
+
+"Meu teclado parou de funcionar algumas teclas.")
