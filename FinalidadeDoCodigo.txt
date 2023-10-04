@@ -1,0 +1,3 @@
+(primeira informação)
+
+este codigo e arquivos tem como funcionalidade testar o git enquanto cria um game parecido com PACMAN.
