@@ -9,6 +9,7 @@ public class ViewPac : MonoBehaviour
     public Animator animator;
     private void Start()
     {
+        animator = GetComponent<Animator>();
         motor.OnDirectionChaged += Motor_OnDirectionChaged;
     }
 
@@ -17,18 +18,23 @@ public class ViewPac : MonoBehaviour
         switch (direction)
         {
             case Direction.none:
+               
                 break; 
 
             case Direction.up:
+                transform.rotation = Quaternion.Euler(0,0,180);
                 break; 
 
             case Direction.left:
+                transform.rotation = Quaternion.Euler(0, 0, -90);
                 break; 
 
             case Direction.right:
+                transform.rotation = Quaternion.Euler(0, 0, 90);
                 break;
 
             case Direction.down:
+                transform.rotation = Quaternion.Euler(0, 0, 0);
                 break;
         }
             

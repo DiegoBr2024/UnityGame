@@ -19,7 +19,7 @@ public class pacman : MonoBehaviour
 
     public float MoveSpeed;
 
-    public Rigidbody2D rigidbody;
+    public Rigidbody2D rigidbory1;
     public Vector2 CurrentMovimentDirection;
     public Vector2 desiredMovimentDirection;
 
@@ -29,7 +29,7 @@ public class pacman : MonoBehaviour
     void Start()
     {
         boxsize = GetComponent<BoxCollider2D>().size;
-        rigidbody = GetComponent<Rigidbody2D>();
+        rigidbory1 = GetComponent<Rigidbody2D>();
     }
 
     public event Action<Direction> OnDirectionChaged;
@@ -88,41 +88,41 @@ public class pacman : MonoBehaviour
     void FixedUpdate()
     {
         float movedistance = MoveSpeed * Time.fixedDeltaTime;
-        var nextposition = rigidbody.position + CurrentMovimentDirection *movedistance;
+        var nextposition = rigidbory1.position + CurrentMovimentDirection *movedistance;
 
         if (CurrentMovimentDirection.y > 0)//up
         {
-            var maxY = Mathf.CeilToInt(rigidbody.position.y);
+            var maxY = Mathf.CeilToInt(rigidbory1.position.y);
             if (nextposition.y >= maxY)
             {
-                transform.position = new Vector2(rigidbody.position.x, maxY);
+                transform.position = new Vector2(rigidbory1.position.x, maxY);
                 movedistance = nextposition.y - maxY;
             }
         } 
         if (CurrentMovimentDirection.x < 0)//left
         {
-            var minX = Mathf.FloorToInt(rigidbody.position.x);
+            var minX = Mathf.FloorToInt(rigidbory1.position.x);
             if (nextposition.x <= minX)
             {
-                transform.position = new Vector2(minX, rigidbody.position.y);
+                transform.position = new Vector2(minX, rigidbory1.position.y);
                 movedistance = minX -nextposition.x ;
             }
         } 
         if (CurrentMovimentDirection.x > 0 )// right
         {
-            var maxX = Mathf.CeilToInt(rigidbody.position.x);
+            var maxX = Mathf.CeilToInt(rigidbory1.position.x);
             if (nextposition.x >= maxX)
             {
-                transform.position = new Vector2(maxX, rigidbody.position.y);
+                transform.position = new Vector2(maxX, rigidbory1.position.y);
                 movedistance = nextposition.x - maxX;
             }
         }  
         if (CurrentMovimentDirection.y < 0)//down
         {
-            var minX = Mathf.FloorToInt(rigidbody.position.y);
+            var minX = Mathf.FloorToInt(rigidbory1.position.y);
             if (nextposition.y <= minX)
             {
-                transform.position = new Vector2(rigidbody.position.x, minX );
+                transform.position = new Vector2(rigidbory1.position.x, minX );
                 movedistance = minX- nextposition.y;
             }
         }
@@ -130,22 +130,22 @@ public class pacman : MonoBehaviour
 
        
        Physics2D.SyncTransforms();
-        if ( rigidbody.position.y == Mathf.CeilToInt(rigidbody.position.y) )
+        if ( rigidbory1.position.y == Mathf.CeilToInt(rigidbory1.position.y) )
         {
-            if ( rigidbody.position.x == Mathf.CeilToInt(rigidbody.position.x )) {
+            if ( rigidbory1.position.x == Mathf.CeilToInt(rigidbory1.position.x )) {
                
 
                 if (CurrentMovimentDirection != desiredMovimentDirection)
                 {
                     
-                    if (!Physics2D.BoxCast(rigidbody.position, boxsize, 0, desiredMovimentDirection, 0.6f, 1 << LayerMask.NameToLayer("colisor")))
+                    if (!Physics2D.BoxCast(rigidbory1.position, boxsize, 0, desiredMovimentDirection, 0.6f, 1 << LayerMask.NameToLayer("colisor")))
                     {
                         CurrentMovimentDirection = desiredMovimentDirection;
                         OnDirectionChaged?.Invoke(currentmovedirection);
                     }
 
                 }
-                if (Physics2D.BoxCast(rigidbody.position, boxsize, 0, CurrentMovimentDirection, 0.6f, 1 << LayerMask.NameToLayer("colisor")))
+                if (Physics2D.BoxCast(rigidbory1.position, boxsize, 0, CurrentMovimentDirection, 0.1f, 1 << LayerMask.NameToLayer("colisor")))
                 {
                     CurrentMovimentDirection = Vector2.zero;
                     OnDirectionChaged?.Invoke(currentmovedirection);
@@ -154,7 +154,7 @@ public class pacman : MonoBehaviour
 
         } 
        
-        rigidbody.MovePosition(rigidbody.position + CurrentMovimentDirection * movedistance);
+        rigidbory1.MovePosition(rigidbory1.position + CurrentMovimentDirection * movedistance);
 
 
 
