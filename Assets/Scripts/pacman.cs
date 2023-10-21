@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum Direction
@@ -24,12 +22,23 @@ public class pacman : MonoBehaviour
     public Vector2 desiredMovimentDirection;
 
     private Vector2 boxsize;
+    private LayerMask layer;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
+        //layer = 1 << LayerMask.NameToLayer("collider") | 1 << LayerMask.NameToLayer("Gates"); esse codigo faz o mesmo que o de baixo
+        layer = LayerMask.GetMask(new string[] { "collider", "Gates" }); //este codigo faz o mesmo que o decima
+
         boxsize = GetComponent<BoxCollider2D>().size;
         rigidbory1 = GetComponent<Rigidbody2D>();
+    }
+
+    public LayerMask colisionLayer
+    {
+        get => layer;
     }
 
     public event Action onalinedwithgrid;
@@ -89,7 +98,7 @@ public class pacman : MonoBehaviour
     void FixedUpdate()
     {
         float movedistance = MoveSpeed * Time.fixedDeltaTime;
-        var nextposition = rigidbory1.position + CurrentMovimentDirection *movedistance;
+        var nextposition = rigidbory1.position + CurrentMovimentDirection * movedistance;
 
         if (CurrentMovimentDirection.y > 0)//up
         {
@@ -99,17 +108,17 @@ public class pacman : MonoBehaviour
                 transform.position = new Vector2(rigidbory1.position.x, maxY);
                 movedistance = nextposition.y - maxY;
             }
-        } 
+        }
         if (CurrentMovimentDirection.x < 0)//left
         {
             var minX = Mathf.FloorToInt(rigidbory1.position.x);
             if (nextposition.x <= minX)
             {
                 transform.position = new Vector2(minX, rigidbory1.position.y);
-                movedistance = minX -nextposition.x ;
+                movedistance = minX - nextposition.x;
             }
-        } 
-        if (CurrentMovimentDirection.x > 0 )// right
+        }
+        if (CurrentMovimentDirection.x > 0)// right
         {
             var maxX = Mathf.CeilToInt(rigidbory1.position.x);
             if (nextposition.x >= maxX)
@@ -117,47 +126,49 @@ public class pacman : MonoBehaviour
                 transform.position = new Vector2(maxX, rigidbory1.position.y);
                 movedistance = nextposition.x - maxX;
             }
-        }  
+        }
         if (CurrentMovimentDirection.y < 0)//down
         {
             var minX = Mathf.FloorToInt(rigidbory1.position.y);
             if (nextposition.y <= minX)
             {
-                transform.position = new Vector2(rigidbory1.position.x, minX );
-                movedistance = minX- nextposition.y;
+                transform.position = new Vector2(rigidbory1.position.x, minX);
+                movedistance = minX - nextposition.y;
             }
         }
-        
 
-       
-       Physics2D.SyncTransforms();
-        if ( rigidbory1.position.y == Mathf.CeilToInt(rigidbory1.position.y) )
+
+
+        Physics2D.SyncTransforms();
+        if (rigidbory1.position.y == Mathf.CeilToInt(rigidbory1.position.y)
+            && rigidbory1.position.x == Mathf.CeilToInt(rigidbory1.position.x) || CurrentMovimentDirection == Vector2.zero)
         {
-            if ( rigidbory1.position.x == Mathf.CeilToInt(rigidbory1.position.x )) {
 
-                onalinedwithgrid?.Invoke();
-                if (CurrentMovimentDirection != desiredMovimentDirection)
-                {
-                    
-                    if (!Physics2D.BoxCast(rigidbory1.position, boxsize, 0, desiredMovimentDirection, 0.6f, 1 << LayerMask.NameToLayer("collider") | 1 << LayerMask.NameToLayer("Gates")))
-                    {
-                        CurrentMovimentDirection = desiredMovimentDirection;
-                        OnDirectionChaged?.Invoke(currentmovedirection);
-                    }
 
-                }
-                if (Physics2D.BoxCast(rigidbory1.position, boxsize, 0, CurrentMovimentDirection, 1f, 1 << LayerMask.NameToLayer("collider") | 1 << LayerMask.NameToLayer("Gates")))
+            onalinedwithgrid?.Invoke();
+            if (CurrentMovimentDirection != desiredMovimentDirection)
+            {
+
+                if (!Physics2D.BoxCast(rigidbory1.position, boxsize, 0, desiredMovimentDirection, 1.2f, layer))
                 {
-                    CurrentMovimentDirection = Vector2.zero;
+                    CurrentMovimentDirection = desiredMovimentDirection;
                     OnDirectionChaged?.Invoke(currentmovedirection);
                 }
+
+            }
+            if (Physics2D.BoxCast(rigidbory1.position, boxsize, 0, CurrentMovimentDirection, 1.2f, layer))
+            {
+                CurrentMovimentDirection = Vector2.zero;
+                OnDirectionChaged?.Invoke(currentmovedirection);
             }
 
-        } 
-       
+
+        }
+
         rigidbory1.MovePosition(rigidbory1.position + CurrentMovimentDirection * movedistance);
 
 
 
     }
+
 }
