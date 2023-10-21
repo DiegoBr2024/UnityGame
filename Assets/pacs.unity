@@ -149,40 +149,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   motor: {fileID: 1950447364}
   animator: {fileID: 551429232}
---- !u!1 &334568454 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3898945533861560682, guid: 7084e9789ba5c1d489f0ab130e835b14,
-    type: 3}
-  m_PrefabInstance: {fileID: 1538947467}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &334568458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 334568454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ec01c9ed3c540340a44b1254d578b48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &334568459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 334568454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 100ccd210da66ac4ea73e9f2c31d4cd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSpeed: 1.5
-  rigidbory1: {fileID: 0}
-  CurrentMovimentDirection: {x: 0, y: 0}
-  desiredMovimentDirection: {x: 0, y: 0}
 --- !u!1001 &455791173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -646,7 +612,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 334568463, guid: 7084e9789ba5c1d489f0ab130e835b14, type: 3}
+    - {fileID: 334568459, guid: 7084e9789ba5c1d489f0ab130e835b14, type: 3}
+    - {fileID: 334568458, guid: 7084e9789ba5c1d489f0ab130e835b14, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7084e9789ba5c1d489f0ab130e835b14, type: 3}
 --- !u!1001 &1784584342
 PrefabInstance:
