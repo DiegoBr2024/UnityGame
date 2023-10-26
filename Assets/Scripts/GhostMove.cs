@@ -17,7 +17,7 @@ public class GhostMove : MonoBehaviour
         TargetMovingLocation = targetmove;
     }
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         motor = GetComponent<pacman>();
         motor.onalinedwithgrid += Motoronalinewithgrid;
@@ -25,6 +25,8 @@ public class GhostMove : MonoBehaviour
         boxsize = GetComponent<BoxCollider2D>().size;
 
     }
+
+    public pacman Pacman { get { return motor; } }
     private void Motoronalinewithgrid()
     {
         OnUpdateMoveTarget?.Invoke();
