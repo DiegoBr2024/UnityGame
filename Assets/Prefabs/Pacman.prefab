@@ -92,6 +92,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7786777576644217942}
   m_Enabled: 1
+<<<<<<< Updated upstream
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 2548b6f03088ada4bb5cad1427a2a2e5, type: 2}
   m_CullingMode: 0
@@ -102,6 +103,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+=======
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62f4177ffdc0f8c498b42836f3d40fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  motor: {fileID: 1950447364}
+  life: {fileID: 0}
+  animator: {fileID: 551429232}
+  audioSource: {fileID: 0}
+  LifeLostsong: {fileID: 8300000, guid: 3f1c5bce6e83c434cb87e9847184e6a1, type: 3}
+>>>>>>> Stashed changes
 --- !u!1 &7786777578098180152
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,6 +125,12 @@ GameObject:
   - component: {fileID: 7786777578098180157}
   - component: {fileID: 7786777578098180156}
   - component: {fileID: 963969594380764819}
+<<<<<<< Updated upstream
+=======
+  - component: {fileID: 1950447363}
+  - component: {fileID: 1950447364}
+  - component: {fileID: 8321906914843229275}
+>>>>>>> Stashed changes
   m_Layer: 8
   m_Name: Pacman
   m_TagString: Player
@@ -182,3 +200,47 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+<<<<<<< Updated upstream
+=======
+--- !u!114 &1950447363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7786777578098180152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 681e5745756f66e4a936fcb600a888f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1950447364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7786777578098180152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 100ccd210da66ac4ea73e9f2c31d4cd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 2.15
+  rigidbory1: {fileID: 963969594380764819}
+  CurrentMovimentDirection: {x: 0, y: 0}
+  desiredMovimentDirection: {x: 0, y: 0}
+--- !u!114 &8321906914843229275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7786777578098180152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbdaa24a5d1ba134f83911fb6623c67d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lives: 3
+>>>>>>> Stashed changes

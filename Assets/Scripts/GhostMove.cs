@@ -7,9 +7,11 @@ public class GhostMove : MonoBehaviour
     private pacman motor;
     private Vector2 boxsize;
 
+
+
     private LayerMask colionslayermask;
     private Vector2 TargetMovingLocation;
-
+    public pacman Pacman { get { return motor; } }
     public event Action OnUpdateMoveTarget;
 
     public void setTargetMovelocation(Vector2 targetmove)
@@ -25,6 +27,11 @@ public class GhostMove : MonoBehaviour
         boxsize = GetComponent<BoxCollider2D>().size;
 
     }
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
     private void Motoronalinewithgrid()
     {
         OnUpdateMoveTarget?.Invoke();

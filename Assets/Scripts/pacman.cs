@@ -41,6 +41,12 @@ public class pacman : MonoBehaviour
         get => layer;
     }
 
+<<<<<<< Updated upstream
+=======
+
+    public event Action OnDisabled;
+    public event Action onResetPosition;
+>>>>>>> Stashed changes
     public event Action onalinedwithgrid;
     public event Action<Direction> OnDirectionChaged;
 
