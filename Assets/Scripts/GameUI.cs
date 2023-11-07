@@ -20,16 +20,16 @@ public class GameUI : MonoBehaviour
         manager.OnGameOver += Manager_OnGameOver;
 
     }
-
+    private void Manager_OnGameStated()
+    {
+        ReadyMessage.SetActive(false);
+    }
     private void Manager_OnGameOver()
     {
         GameOverMessage.SetActive(true);
     }
 
-    private void Manager_OnGameStated()
-    {
-        ReadyMessage.SetActive(false);
-    }
+
 
     // Update is called once per frame
 

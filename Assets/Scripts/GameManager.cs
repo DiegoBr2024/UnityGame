@@ -16,14 +16,17 @@ public class GameManager : MonoBehaviour
     }
     public float LifeLostTimer;
     private float LifeTimer;
+
     private GhostAI[] allGhost;
     private pacman pacman1;
+
     public bool IsGameOver;
     private int VictoryCount;
+
     public float StartupTimer;
     private GameState gameState;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         VictoryCount = 0;
         var allcoletable = FindObjectsOfType<Collectable>();

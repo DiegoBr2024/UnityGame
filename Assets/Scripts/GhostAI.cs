@@ -6,6 +6,12 @@ public class GhostAI : MonoBehaviour
     private GhostMove ghostMove;
     private Transform pacman;
 
+    public enum GhostState
+    {
+        Active,
+        vulnerable
+    }
+
     public void StopMoving()
     {
         ghostMove.Pacman.enabled = false;
