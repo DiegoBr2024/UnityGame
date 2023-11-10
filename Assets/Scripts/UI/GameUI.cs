@@ -6,6 +6,8 @@ public class GameUI : MonoBehaviour
 
     public GameObject GameOverMessage;
 
+    public BlinkTileMapColor BlinkTileMap;
+
     public AudioSource AudioSource;
 
     public AudioClip begginMusic;
@@ -18,8 +20,15 @@ public class GameUI : MonoBehaviour
         AudioSource.PlayOneShot(begginMusic);
         manager.OnGameStated += Manager_OnGameStated;
         manager.OnGameOver += Manager_OnGameOver;
+        manager.OnVictory += Manager_OnVictory;
 
     }
+
+    private void Manager_OnVictory()
+    {
+        BlinkTileMap.enabled = true;
+    }
+
     private void Manager_OnGameStated()
     {
         ReadyMessage.SetActive(false);

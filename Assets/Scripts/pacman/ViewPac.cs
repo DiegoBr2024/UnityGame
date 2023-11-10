@@ -46,7 +46,7 @@ public class ViewPac : MonoBehaviour
         {
             case Direction.none:
                 animator.SetBool("Moving", false);
-                animator.speed = 1;
+
                 break;
 
             case Direction.up:
