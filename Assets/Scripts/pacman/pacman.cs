@@ -16,6 +16,7 @@ public class pacman : MonoBehaviour
 {
 
     public float MoveSpeed;
+    private Vector3 InitialPosition;
 
     public Rigidbody2D rigidbory1;
     public Vector2 CurrentMovimentDirection;
@@ -29,11 +30,22 @@ public class pacman : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        desiredMovimentDirection = Vector2.zero;
+        CurrentMovimentDirection = Vector2.zero;
         //layer = 1 << LayerMask.NameToLayer("collider") | 1 << LayerMask.NameToLayer("Gates"); esse codigo faz o mesmo que o de baixo
         layer = LayerMask.GetMask(new string[] { "collider", "Gates" }); //este codigo faz o mesmo que o decima
 
         boxsize = GetComponent<BoxCollider2D>().size;
         rigidbory1 = GetComponent<Rigidbody2D>();
+        InitialPosition = transform.position;
+    }
+
+    public void ResetPosition()
+    {
+        desiredMovimentDirection = Vector2.zero;
+        CurrentMovimentDirection = Vector2.zero;
+        transform.position = InitialPosition;
+        onResetPosition?.Invoke();
     }
 
     public LayerMask colisionLayer
@@ -41,12 +53,8 @@ public class pacman : MonoBehaviour
         get => layer;
     }
 
-<<<<<<< Updated upstream
-=======
-
     public event Action OnDisabled;
     public event Action onResetPosition;
->>>>>>> Stashed changes
     public event Action onalinedwithgrid;
     public event Action<Direction> OnDirectionChaged;
 
@@ -175,6 +183,10 @@ public class pacman : MonoBehaviour
 
 
 
+    }
+    private void OnDisable()
+    {
+        OnDisabled?.Invoke();
     }
 
 }

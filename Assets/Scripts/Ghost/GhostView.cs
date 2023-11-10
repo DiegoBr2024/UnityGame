@@ -19,6 +19,14 @@ public class GhostView : MonoBehaviour
     {
         animator.SetInteger("GhostType", (int)type);
         pacman.OnDirectionChaged += Pacman_OnDirectionChaged;
+        ghostAI.OnGhosStatehanged += GhostAI_OnGhosStatehanged;
+    }
+
+    private void GhostAI_OnGhosStatehanged(GhostAI.GhostState GhostState)
+    {
+        animator.SetInteger("State", (int)GhostState);
+
+
     }
 
     private void Pacman_OnDirectionChaged(Direction direction)
