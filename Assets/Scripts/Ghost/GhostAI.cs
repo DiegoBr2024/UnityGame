@@ -10,6 +10,8 @@ public class GhostAI : MonoBehaviour
     private GhostMove ghostMove;
     private Transform pacman;
 
+    private bool Leavehouse;
+
     public enum GhostState
     {
         Active,
@@ -18,11 +20,28 @@ public class GhostAI : MonoBehaviour
         defeated
     }
 
+
+
+    public void recover()
+    {
+        ghostMove.Pacman.ColliderWithGates(true);
+        state = GhostState.Active;
+        OnGhosStatehanged?.Invoke(state);
+        Leavehouse = false;
+    }
+
+    public void LeaveHouse()
+    {
+        ghostMove.Pacman.ColliderWithGates(false);
+        Leavehouse = true;
+    }
+
     public void SetVunerable(float Duration)
     {
         VunerabilidadeTimer = Duration;
         state = GhostState.vulnerable;
         OnGhosStatehanged?.Invoke(state);
+        ghostMove.allowreversed();
     }
 
     public float vunerabilitEndingTime;
@@ -43,6 +62,7 @@ public class GhostAI : MonoBehaviour
         ghostMove.Pacman.ResetPosition();
         state = GhostState.Active;
         OnGhosStatehanged?.Invoke(state);
+        Leavehouse = false;
     }
 
     public void StartMoving()
@@ -57,13 +77,45 @@ public class GhostAI : MonoBehaviour
 
         pacman = GameObject.Find("Pacman").transform;
         state = GhostState.Active;
+        Leavehouse = false;
     }
 
 
 
     private void GhostMove_OnUpdateMoveTarget()
     {
-        ghostMove.setTargetMovelocation(pacman.transform.position);
+
+        switch (state)
+        {
+            case GhostState.Active:
+                if (Leavehouse)
+                {
+                    if (transform.position == new Vector3(0, 4, 0))
+                    {
+                        Leavehouse = false;
+                        ghostMove.Pacman.ColliderWithGates(false);
+                        ghostMove.setTargetMovelocation(pacman.transform.position);
+                    }
+                    else ghostMove.setTargetMovelocation(new Vector3(0, 4, 0));
+
+                }
+                else
+                {
+                    ghostMove.setTargetMovelocation(pacman.transform.position);
+                }
+                break;
+
+            case GhostState.vulnerable:
+            case GhostState.vulnerabilytEnding:
+                ghostMove.setTargetMovelocation((transform.position - pacman.position) * 2);
+                break;
+
+            case GhostState.defeated:
+                ghostMove.setTargetMovelocation(Vector2.zero);
+                break;
+
+        }
+
     }
 
     // Update is called once per frame
@@ -115,6 +167,8 @@ public class GhostAI : MonoBehaviour
             case GhostState.vulnerabilytEnding:
                 if (collision.CompareTag("Player"))
                 {
+
+                    ghostMove.Pacman.ColliderWithGates(false);
                     state = GhostState.defeated;
                     OnGhosStatehanged?.Invoke(state);
                 }

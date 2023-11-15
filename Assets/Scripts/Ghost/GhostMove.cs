@@ -10,8 +10,12 @@ public class GhostMove : MonoBehaviour
     private LayerMask colionslayermask;
     private Vector2 TargetMovingLocation;
 
+    public void allowreversed()
+    {
+        allowreversedirection = true;
+    }
     public event Action OnUpdateMoveTarget;
-
+    private bool allowreversedirection;
     public void setTargetMovelocation(Vector2 targetmove)
     {
         TargetMovingLocation = targetmove;
@@ -23,7 +27,7 @@ public class GhostMove : MonoBehaviour
         motor.onalinedwithgrid += Motoronalinewithgrid;
         Motoronalinewithgrid();
         boxsize = GetComponent<BoxCollider2D>().size;
-
+        allowreversedirection = false;
     }
 
     public pacman Pacman { get { return motor; } }
@@ -51,6 +55,7 @@ public class GhostMove : MonoBehaviour
 
 
         motor.SetMoveDirection(finaldirection);
+        allowreversedirection = false;
     }
 
     private void UpdateDirectionFinal(Direction direcao, Vector3 offset, ref float closesdistance, ref Direction FinalDirection)
@@ -74,16 +79,16 @@ public class GhostMove : MonoBehaviour
         {
 
             case Direction.up:
-                return !Physics2D.BoxCast(transform.position, boxsize, 0, Vector2.up, 1f, motor.colisionLayer) && motor.currentmovedirection != Direction.down;
+                return !Physics2D.BoxCast(transform.position, boxsize, 0, Vector2.up, 1f, motor.colisionLayer) && motor.currentmovedirection != Direction.down || allowreversedirection;
 
             case Direction.left:
-                return !Physics2D.BoxCast(transform.position, boxsize, 0, Vector2.left, 1f, motor.colisionLayer) && motor.currentmovedirection != Direction.right;
+                return !Physics2D.BoxCast(transform.position, boxsize, 0, Vector2.left, 1f, motor.colisionLayer) && motor.currentmovedirection != Direction.right || allowreversedirection;
 
             case Direction.right:
-                return !Physics2D.BoxCast(transform.position, boxsize, 0, Vector2.right, 1f, motor.colisionLayer) && motor.currentmovedirection != Direction.left;
+                return !Physics2D.BoxCast(transform.position, boxsize, 0, Vector2.right, 1f, motor.colisionLayer) && motor.currentmovedirection != Direction.left || allowreversedirection;
 
             case Direction.down:
-                return !Physics2D.BoxCast(transform.position, boxsize, 0, Vector2.down, 1f, motor.colisionLayer) && motor.currentmovedirection != Direction.up;
+                return !Physics2D.BoxCast(transform.position, boxsize, 0, Vector2.down, 1f, motor.colisionLayer) && motor.currentmovedirection != Direction.up || allowreversedirection;
 
         }
         return false;

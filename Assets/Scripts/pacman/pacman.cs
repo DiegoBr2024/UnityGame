@@ -30,6 +30,7 @@ public class pacman : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         desiredMovimentDirection = Vector2.zero;
         CurrentMovimentDirection = Vector2.zero;
         //layer = 1 << LayerMask.NameToLayer("collider") | 1 << LayerMask.NameToLayer("Gates"); esse codigo faz o mesmo que o de baixo
@@ -38,6 +39,7 @@ public class pacman : MonoBehaviour
         boxsize = GetComponent<BoxCollider2D>().size;
         rigidbory1 = GetComponent<Rigidbody2D>();
         InitialPosition = transform.position;
+        ColliderWithGates(true);
     }
 
     public void ResetPosition()
@@ -51,6 +53,18 @@ public class pacman : MonoBehaviour
     public LayerMask colisionLayer
     {
         get => layer;
+    }
+
+    public void ColliderWithGates(bool shouldCollider)
+    {
+        if (shouldCollider)
+        {
+            layer = LayerMask.GetMask(new string[] { "collider", "Gates" });
+        }
+        else
+        {
+            layer = LayerMask.GetMask(new string[] { "collider" });
+        }
     }
 
     public event Action OnDisabled;
@@ -86,10 +100,7 @@ public class pacman : MonoBehaviour
     {
         switch (newdirection)
         {
-            default:
-            case Direction.none:
-                desiredMovimentDirection = Vector2.zero;
-                break;
+
 
             case Direction.up:
                 desiredMovimentDirection = Vector2.up;
@@ -105,6 +116,11 @@ public class pacman : MonoBehaviour
 
             case Direction.left:
                 desiredMovimentDirection = Vector2.left;
+                break;
+
+            default:
+            case Direction.none:
+                CurrentMovimentDirection = Vector2.zero;
                 break;
         }
     }
@@ -163,14 +179,14 @@ public class pacman : MonoBehaviour
             if (CurrentMovimentDirection != desiredMovimentDirection)
             {
 
-                if (!Physics2D.BoxCast(rigidbory1.position, boxsize, 0, desiredMovimentDirection, 1.2f, layer))
+                if (!Physics2D.BoxCast(rigidbory1.position, boxsize, 0, desiredMovimentDirection, 1.1f, layer))
                 {
                     CurrentMovimentDirection = desiredMovimentDirection;
                     OnDirectionChaged?.Invoke(currentmovedirection);
                 }
 
             }
-            if (Physics2D.BoxCast(rigidbory1.position, boxsize, 0, CurrentMovimentDirection, 1.2f, layer))
+            if (Physics2D.BoxCast(rigidbory1.position, boxsize, 0, CurrentMovimentDirection, 1.1f, layer))
             {
                 CurrentMovimentDirection = Vector2.zero;
                 OnDirectionChaged?.Invoke(currentmovedirection);

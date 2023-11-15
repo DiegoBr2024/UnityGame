@@ -314,7 +314,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.393
+  m_Volume: 0.122
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2306,6 +2306,26 @@ PrefabInstance:
     - {fileID: 334568458, guid: 7084e9789ba5c1d489f0ab130e835b14, type: 3}
     - {fileID: 8640283936325096854, guid: 7084e9789ba5c1d489f0ab130e835b14, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7084e9789ba5c1d489f0ab130e835b14, type: 3}
+--- !u!1 &1692245377 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6415039793220623671, guid: c0a9a202f8db7fc4c8fb621fd9cc6948,
+    type: 3}
+  m_PrefabInstance: {fileID: 1830870782}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1692245380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692245377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d72f15baaa162c48aa94d4f2cfe5c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeaveHouseInterval: 5
+  leavehosetimer: 0
 --- !u!1001 &1784584342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2382,6 +2402,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 243951383, guid: c0a9a202f8db7fc4c8fb621fd9cc6948, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.45
+      objectReference: {fileID: 0}
     - target: {fileID: 4676070523609416964, guid: c0a9a202f8db7fc4c8fb621fd9cc6948,
         type: 3}
       propertyPath: m_Name
@@ -2524,6 +2548,10 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 516225352}
+    - target: {fileID: 1950447364, guid: f126721da5c98d646b9793f201c46ada, type: 3}
+      propertyPath: MoveSpeed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7786777578098180152, guid: f126721da5c98d646b9793f201c46ada,
         type: 3}
       propertyPath: m_Name
@@ -2537,12 +2565,12 @@ PrefabInstance:
     - target: {fileID: 7786777578098180157, guid: f126721da5c98d646b9793f201c46ada,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 7786777578098180157, guid: f126721da5c98d646b9793f201c46ada,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 7786777578098180157, guid: f126721da5c98d646b9793f201c46ada,
         type: 3}
