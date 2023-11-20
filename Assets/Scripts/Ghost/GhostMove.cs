@@ -39,6 +39,7 @@ public class GhostMove : MonoBehaviour
 
     private void changemovedirection()
     {
+
         var pacman = GameObject.FindWithTag("Player").transform;
 
         var closesdistance = float.MaxValue;
@@ -48,8 +49,6 @@ public class GhostMove : MonoBehaviour
         UpdateDirectionFinal(Direction.left, Vector3.left, ref closesdistance, ref finaldirection);
         UpdateDirectionFinal(Direction.right, Vector3.right, ref closesdistance, ref finaldirection);
         UpdateDirectionFinal(Direction.down, Vector3.down, ref closesdistance, ref finaldirection);
-
-
 
 
 
@@ -99,4 +98,5 @@ public class GhostMove : MonoBehaviour
     {
 
     }
+
 }
