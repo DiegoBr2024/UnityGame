@@ -59,7 +59,7 @@ public class GhostMove : MonoBehaviour
 
     private void UpdateDirectionFinal(Direction direcao, Vector3 offset, ref float closesdistance, ref Direction FinalDirection)
     {
-        var pac = GameObject.Find("Pacman").transform.position;
+        //var pac = GameObject.Find("Pacman").transform.position;
 
         var dist = Vector2.Distance(transform.position + offset, TargetMovingLocation);
         if (checkdiurection(direcao))

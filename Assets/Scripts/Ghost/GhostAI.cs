@@ -84,19 +84,19 @@ public class GhostAI : MonoBehaviour
 
     private void GhostMove_OnUpdateMoveTarget()
     {
-
+        // ghostMove.setTargetMovelocation(pacman.transform.position);
         switch (state)
         {
             case GhostState.Active:
                 if (Leavehouse)
                 {
-                    if (transform.position == new Vector3(0, 4, 0))
+                    if (transform.position == new Vector3(-1, 3, 0))
                     {
                         Leavehouse = false;
                         ghostMove.Pacman.ColliderWithGates(false);
                         ghostMove.setTargetMovelocation(pacman.transform.position);
                     }
-                    else ghostMove.setTargetMovelocation(new Vector3(0, 4, 0));
+                    else ghostMove.setTargetMovelocation(new Vector3(-1, 3, 0));
 
                 }
                 else

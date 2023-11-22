@@ -209,6 +209,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0550df4d52125bf43b5e35b6971d974a, type: 3}
+--- !u!1 &354636522 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6415039793220623671, guid: c0a9a202f8db7fc4c8fb621fd9cc6948,
+    type: 3}
+  m_PrefabInstance: {fileID: 4676070523374552632}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &354636524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354636522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d72f15baaa162c48aa94d4f2cfe5c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeaveHouseInterval: 5
+  leavehosetimer: 0
 --- !u!1001 &501019502
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -533,6 +553,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8785825786031533286, guid: ae327bd502d47fc41a21dddcb4307667,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8785825786688063641, guid: ae327bd502d47fc41a21dddcb4307667,
         type: 3}
       propertyPath: m_RootOrder
@@ -858,7 +883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LifeLostTimer: 3
-  IsGameOver: 0
+  IsGameOver: 1
   StartupTimer: 4
 --- !u!1001 &3606565088126076225
 PrefabInstance:
@@ -1202,6 +1227,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4676070523945842626, guid: c0a9a202f8db7fc4c8fb621fd9cc6948,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0a9a202f8db7fc4c8fb621fd9cc6948, type: 3}

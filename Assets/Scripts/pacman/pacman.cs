@@ -179,14 +179,14 @@ public class pacman : MonoBehaviour
             if (CurrentMovimentDirection != desiredMovimentDirection)
             {
 
-                if (!Physics2D.BoxCast(rigidbory1.position, boxsize, 0, desiredMovimentDirection, 1.1f, layer))
+                if (!Physics2D.BoxCast(rigidbory1.position, boxsize, 0, desiredMovimentDirection, 1f, layer))
                 {
                     CurrentMovimentDirection = desiredMovimentDirection;
                     OnDirectionChaged?.Invoke(currentmovedirection);
                 }
 
             }
-            if (Physics2D.BoxCast(rigidbory1.position, boxsize, 0, CurrentMovimentDirection, 1.1f, layer))
+            if (Physics2D.BoxCast(rigidbory1.position, boxsize, 0, CurrentMovimentDirection, 1f, layer))
             {
                 CurrentMovimentDirection = Vector2.zero;
                 OnDirectionChaged?.Invoke(currentmovedirection);

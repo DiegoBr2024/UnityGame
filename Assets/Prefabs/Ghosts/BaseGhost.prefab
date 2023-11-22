@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100ccd210da66ac4ea73e9f2c31d4cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 2
+  MoveSpeed: 3
   rigidbory1: {fileID: 0}
   CurrentMovimentDirection: {x: 0, y: 0}
   desiredMovimentDirection: {x: 0, y: 0}
