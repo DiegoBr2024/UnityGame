@@ -16,6 +16,7 @@ public class GameUI : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        print(gameObject.name);
         manager = FindObjectOfType<GameManager>();
         AudioSource.PlayOneShot(begginMusic);
         manager.OnGameStated += Manager_OnGameStated;

@@ -2,8 +2,10 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class GameManager : MonoBehaviour
 {
+    private GhostHouse ghostHouse;
 
     private enum GameState
     {
@@ -43,6 +45,9 @@ public class GameManager : MonoBehaviour
         allGhost = FindObjectsOfType<GhostAI>();
         StopAllCharacters();
 
+        ghostHouse = FindObjectOfType<GhostHouse>();
+        ghostHouse.enabled = false;
+
         player.GetComponent<Life>().OnLifeRemoved += Pacman_OnLifeRemoved;
     }
 
@@ -75,7 +80,10 @@ public class GameManager : MonoBehaviour
                 StartupTimer -= Time.deltaTime;
                 if (StartupTimer <= 0)
                 {
-                    gameState = GameState.Playing; StartAllCharacters(); OnGameStated?.Invoke();
+                    gameState = GameState.Playing;
+                    StartAllCharacters();
+                    OnGameStated?.Invoke();
+                    ghostHouse.enabled = true;
 
                 }
 

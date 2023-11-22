@@ -90,13 +90,13 @@ public class GhostAI : MonoBehaviour
             case GhostState.Active:
                 if (Leavehouse)
                 {
-                    if (transform.position == new Vector3(-1, 3, 0))
+                    if (transform.position == new Vector3(0, 3, 0))
                     {
                         Leavehouse = false;
-                        ghostMove.Pacman.ColliderWithGates(false);
+                        ghostMove.Pacman.ColliderWithGates(true);
                         ghostMove.setTargetMovelocation(pacman.transform.position);
                     }
-                    else ghostMove.setTargetMovelocation(new Vector3(-1, 3, 0));
+                    else ghostMove.setTargetMovelocation(new Vector3(0, 3, 0));
 
                 }
                 else
